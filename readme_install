@@ -17,3 +17,75 @@
    17  cd examples/typescript
    18  pnpm your_coin ~/aptos-core/aptos-move/move-examples/moon_coin
    19  history
+
+
+ubuntu@ip-172-31-35-62:~/aptos-core/ecosystem/typescript/sdk/examples/typescript$ pnpm your_fungible_asset ~/aptos-core/aptos-move/move-examples/fungible_asset/fa_coin
+
+> ts-test@1.0.0 your_fungible_asset /home/ubuntu/aptos-core/ecosystem/typescript/sdk/examples/typescript
+> ts-node your_fungible_asset.ts "/home/ubuntu/aptos-core/aptos-move/move-examples/fungible_asset/fa_coin"
+
+
+=== Addresses ===
+Alice: 0x8431c76f989bca8c3cd45da6f0330f741bf621cdbf50aca0268de5d66d8df894
+Bob: 0xe9c0973293b6659a43d8796f002efe8fa4d499574cb751f8157b82bd66a27482
+Charlie: 0x98acfab9dd76afbf117b2033e5f4f11130b675a394072230b6fec5291862d43a
+Update the module with Alice's address, compile, and press enter.
+
+
+
+
+
+start another ternminal
+ cd ~/aptos-core/aptos-move/move-examples/fungible_asset/fa_coin
+ubuntu@ip-172-31-35-62:~/aptos-core/aptos-move/move-examples/fungible_asset/fa_coin$ aptos move compile --named-addresses FACoin=0x8431c76f989bca8c3cd45da6f0330f741bf621cdbf50aca0268de5d66d8df894 --save-metadata
+Compiling, may take a little while to download git dependencies...
+INCLUDING DEPENDENCY AptosFramework
+INCLUDING DEPENDENCY AptosStdlib
+INCLUDING DEPENDENCY MoveStdlib
+BUILDING Examples
+{
+  "Result": [
+    "8431c76f989bca8c3cd45da6f0330f741bf621cdbf50aca0268de5d66d8df894::fa_coin"
+  ]
+}
+ubuntu@ip-172-31-35-62:~/aptos-core/aptos-move/move-examples/fungible_asset/fa_coin$
+
+# now complete in the original terminal
+
+
+
+All the balances in this exmaple refer to balance in primary fungible stores of each account.
+Alice's initial FACoin balance: 0.
+Bob's initial FACoin balance: 0.
+Charlie's initial balance: 0.
+Alice mints Charlie 100 coins.
+Charlie's updated FACoin primary fungible store balance: 100.
+Alice freezes Bob's account.
+Alice as the admin forcefully transfers the newly minted coins of Charlie to Bob ignoring that Bob's account is frozen.
+Bob's updated FACoin balance: 100.
+Alice unfreezes Bob's account.
+Alice burns 50 coins from Bob.
+Bob's updated FACoin balance: 50.
+Bob transfers 10 coins to Alice as the owner.
+Alice's updated FACoin balance: 10.
+Bob's updated FACoin balance: 40.
+done.
+undefined
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
